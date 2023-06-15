@@ -1,0 +1,183 @@
+\documentclass[a4paper, 11pt]{book}
+\usepackage{comment} % enables the use of multi-line comments (\ifx \fi) 
+\usepackage{lipsum} %This package just generates Lorem Ipsum filler text. 
+\usepackage{fullpage} % changes the margin
+\usepackage[a4paper, total={7in, 10in}]{geometry}
+
+%\usepackage{tgadventor} % The font for the entire document can be changed here
+%\usepackage{courier}
+%\usepackage{charter}
+\usepackage{tgcursor}
+
+\usepackage{mathrsfs} 
+\usepackage{quiver} 
+\newtheorem{corollary}{Corollary}
+\usepackage{graphicx}
+\usepackage{tikz}
+
+\usetikzlibrary{arrows}
+\usepackage{verbatim}
+\usepackage[numbered]{mcode}
+\usepackage{float}
+\usepackage{tikz}
+    \usetikzlibrary{shapes,arrows}
+    \usetikzlibrary{arrows,calc,positioning}
+
+    \tikzset{
+        block/.style = {draw, rectangle,
+            minimum height=1cm,
+            minimum width=1.5cm},
+        input/.style = {coordinate,node distance=1cm},
+        output/.style = {coordinate,node distance=4cm},
+        arrow/.style={draw, -latex,node distance=2cm},
+        pinstyle/.style = {pin edge={latex-, black,node distance=2cm}},
+        sum/.style = {draw, circle, node distance=1cm},
+    }
+\usepackage{xcolor}
+\usepackage{mdframed}
+\usepackage[shortlabels]{enumitem}
+\usepackage{indentfirst}
+\usepackage{hyperref}
+\usepackage{amsmath,amsfonts,amsthm, amssymb}
+\usepackage{array}
+\usepackage[all,textures]{xy}
+\usepackage{graphicx}
+\usepackage{alltt}
+\usepackage{listings}
+\usepackage{float}
+\usepackage{tabu}
+\usepackage{longtable}
+
+
+\theoremstyle{plain}
+
+\newtheorem{exercise}{Exercise}[chapter]
+\newtheorem*{theorem1}{Theorem 1}
+\newtheorem*{notation}{Notation}
+\newtheorem*{corollary1.1}{Corollary 1.1}
+\newtheorem*{theorem2}{Theorem 2}
+\newtheorem*{corollary2.1}{Corollary 2.1}
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+
+
+% Define solution environment
+\newenvironment{answer}
+    {\textit{answer:}}
+    {}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Original packages, custom environments, and custom commands below
+  \usepackage{amsmath,amsfonts,amsthm, amssymb}
+  \usepackage{fullpage}
+  \usepackage{array}
+  \usepackage[all,textures]{xy}
+  \usepackage{graphicx}
+  \usepackage{alltt}
+  \usepackage{listings}
+  \usepackage{float}
+  \usepackage{tabu}
+  \usepackage{longtable}
+  \usepackage{lipsum}
+  \usepackage[T1]{fontenc}
+  
+  \theoremstyle{plain}
+  \newtheorem{innercustomgeneric}{\customgenericname}
+\providecommand{\customgenericname}{}
+\newcommand{\newcustomtheorem}[2]{%
+  \newenvironment{#1}[1]
+  {%
+   \renewcommand\customgenericname{#2}%
+   \renewcommand\theinnercustomgeneric{##1}%
+   \innercustomgeneric
+  }
+  {\endinnercustomgeneric}
+}
+
+\newcustomtheorem{definition}{Definition}
+\newcustomtheorem{lemma}{Lemma}
+
+\newcommand{\mb}{\mathbf}
+\newcommand{\arr}{\rightarrow}
+\newcommand{\mc}{\mathcal}
+\newcommand{\ms}{\mathscr}
+\newcommand{\co}{\text{co}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\op}{\oplus}
+\newcommand{\od}{\odot}
+\newcommand{\sent}{\text{Sent}}
+\newcommand{\n}{\neg}
+\newcommand{\bt}{\bullet}
+\newcommand{\lrarr}{\leftrightarrow}
+
+
+  \setlength{\parindent}{0pt}
+ 
+ 
+ \newtheorem{thm}{Exercise}
+
+\begin{document}
+
+  \begin{titlepage}
+	\centering % Center everything on the title page
+	\scshape % Use small caps for all text on the title page
+	\vspace*{1.5\baselineskip} % White space at the top of the page
+% ===================
+%	Title Section 	
+% ===================
+
+	\rule{13cm}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt} % Thick horizontal rule
+	\rule{13cm}{0.4pt} % Thin horizontal rule
+	
+		\vspace{0.75\baselineskip} % Whitespace above the title
+% ========== Title ===============	
+	{	\Huge Fundamentals of Mathematical Logic \\ 
+			\vspace{4mm}
+      By Peter G. Hinman \\	}
+% ======================================
+		\vspace{0.75\baselineskip} % Whitespace below the title
+	\rule{13cm}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % Thin horizontal rule
+	\rule{13cm}{1.6pt} % Thick horizontal rule
+	
+		\vspace{1.75\baselineskip} % Whitespace after the title block
+% =================
+%	Information	
+% =================
+	{\large : 
+		\vspace*{1.2\baselineskip}
+	} \\
+	\vfill
+
+\end{titlepage}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begingroup
+\let\cleardoublepage\clearpage
+\tableofcontents
+\endgroup
+
+\chapter{Propositional Logic and Other Fundamentals}
+
+  \begin{exercise}
+    (Section I, 12)
+    Give a careful proof of Proposition 1.1.9, and show how theorem 1.1.7 is an application of it. \\
+
+    \textbf{Proposition 1.1.9: Sentence recursion theorem.} For any set $Z$, any function $F_0: \sent_0 \arr Z$ and any functions $G_\n: Z \arr Z$ and $G_\bt: Z \times Z \arr Z$, for $\bt $ any of $\lor$, $\land$, $\arr$, $\lrarr $, there exists a unique function $F: \sent_L \arr Z$ such that $F$ extends $F_0$ and for all $L$-senteces $\phi$ and $\psi$, $$F( \n \phi)= G_\n (F(\phi)) \text{ and } F(\bt \phi \psi)=G_\bt (F(\phi), F(\psi)).$$
+  \end{exercise}
+  \begin{proof}
+    We shall define recursively a sequence of functions $F_n: \sent_n \arr Z$ for $n \in \omega$ such that for each $n$, $F_{n+1}$ is extension of $F_n$ and respect the desired relationship. Indeed, given such a $F_n$, we simply use the unqiue readability for propositional sentences to define values of $F_{n+1}$ on the members of $\sent_{n+1}$. Thus, for $\phi \in \sent_{n+1}$, set 
+    $$ F_{n+1}(\phi) = 
+      \begin{cases}
+      F_n(\phi), & \text{if } \phi \in \sent_n \\
+      G_\n (F_{n+1} (\psi)), & \text{if } \phi= \neg \psi \text{ where } \psi \in \sent_n \\
+      G_\bt (F_{n+1}(\psi), F_{n+1}(\gamma)), & \text{if } \phi= \bt \psi \gamma \text{ where } \psi, \gamma \in \sent_n
+      \end{cases} $$
+
+    Now we define $F: \sent_L \arr Z$ by $F(\theta)=F_n(\theta)$ for some $n$ such that $\theta \in \sent_n$. Clearly, $F$ extends $F_0$ and satisfy the desired relationship because all $F_n$ do. Furthermore, unique extension of atomic truth assignemnt is a special case where $Z=\{T, F\}$, and $G_\n$ and $G_\bt$ are truth assignemnt functions.
+  \end{proof}
+
+
+\end{document}
+
